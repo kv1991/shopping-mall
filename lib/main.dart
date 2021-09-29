@@ -20,14 +20,4 @@ class MyApp extends StatelessWidget {
       initialRoute: SplashScreen.routeName,
     );
   }
-
-  theme() {
-    return ThemeData(
-      scaffoldBackgroundColor: Colors.white,
-      fontFamily: 'Muli',
-      appBarTheme: appBarTheme(),
-      textTheme: textTheme(),
-      visualDensity: VisualDensity.adaptivePlatformDensity,
-    );
-  }
 }
