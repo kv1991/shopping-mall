@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_mall/components/custom_surfix_icon.dart';
+import 'package:shopping_mall/components/default_button.dart';
 import 'package:shopping_mall/constants.dart';
+import 'package:shopping_mall/helper/keyboard.dart';
 import 'package:shopping_mall/size_config.dart';
 
 class SignForm extends StatefulWidget {
@@ -10,9 +12,11 @@ class SignForm extends StatefulWidget {
 
 class _SignFormState extends State<SignForm> {
   bool remember = false;
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _formKey,
       child: Column(
         children: [
           buildEmailFormField(),
@@ -37,6 +41,17 @@ class _SignFormState extends State<SignForm> {
               )
             ]
           ),
+          SizedBox(height: getProportionateScreenHeight(20)),
+          DefaultButton(
+            text: 'Continue',
+            press: () {
+              if (_formKey.currentState.validate()) {
+                _formKey.currentState.save();
+                KeyboardUtil.hideKeyboard(context);
+                Navigator.pushNamed(context, '/login_success');
+              }
+            }
+          )
         ]
       )
     );

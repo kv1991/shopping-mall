@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shopping_mall/components/default_button.dart';
+import 'package:shopping_mall/components/socal_card.dart';
 import 'package:shopping_mall/screens/sign_in/components/sign_form.dart';
 import 'package:shopping_mall/size_config.dart';
 
@@ -24,7 +27,17 @@ class Body extends StatelessWidget {
                 'Sign in with your email and password  \nor continue with social media',
                 textAlign: TextAlign.center
               ),
-              SignForm()
+              SizedBox(height: SizeConfig.screenHeight * 0.08),
+              SignForm(),
+              SizedBox(height: SizeConfig.screenHeight * 0.08),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  SocialCart(icon: 'assets/icons/google-icon.svg', press: () {}),
+                  SocialCart(icon: 'assets/icons/facebook-2.svg', press: () {}),
+                  SocialCart(icon: 'assets/icons/twitter.svg', press: () {}),
+                ]
+              )
             ]
           ) 
         )
