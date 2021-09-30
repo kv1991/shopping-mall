@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shopping_mall/components/custom_surfix_icon.dart';
 import 'package:shopping_mall/components/default_button.dart';
 import 'package:shopping_mall/components/form_errors.dart';
@@ -13,10 +14,13 @@ class SignForm extends StatefulWidget {
 
 class _SignFormState extends State<SignForm> {
   bool remember = false;
+  bool isObscureText = true;
   String email;
   String password;
+  String iconPath = 'Lock';
   final _formKey = GlobalKey<FormState>();
   final List <String>errors = [];
+  TextEditingController passwordEditingController = TextEditingController();
 
   void addError({ String error }) {
     if(!errors.contains(error)) {
@@ -120,11 +124,21 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildPasswordFormField() {
     return TextFormField(
-      keyboardType: TextInputType.emailAddress,
+      obscureText: isObscureText,
       onSaved: (newValue) => newValue = password,
+      controller: passwordEditingController,
       onChanged: (value) {
+        if(value.isEmpty) {
+          setState(() {
+            iconPath = 'Lock';
+          });
+        }
         if(value.isNotEmpty) {
           removeError(error: kPassNullError);
+          setState(() {
+            iconPath = 'eye-closed';
+          });
+          _formKey.currentState.save();
         } else if(value.length >= 8) {
           removeError(error: kShortPassError);
         }
@@ -144,7 +158,31 @@ class _SignFormState extends State<SignForm> {
         labelText: 'Password',
         hintText: 'Enter your password',
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: 'assets/icons/Lock.svg')
+        suffixIcon: Padding(
+          padding: EdgeInsets.only(right: getProportionateScreenWidth(10)),
+          child: IconButton(
+          // icon: CustomSurffixIcon(svgIcon: 'assets/icons/Lock.svg'),
+          icon: SvgPicture.asset(
+            'assets/icons/${iconPath}.svg',
+            width: getProportionateScreenWidth(20)
+          ),
+          onPressed: () {
+            setState(() {
+              if(passwordEditingController.text.isNotEmpty) {
+                if(isObscureText) {
+                  iconPath = 'eye-open';
+                } else {
+                  iconPath = 'eye-closed';
+                }
+                isObscureText = !isObscureText;
+              } else {
+                iconPath = 'Lock';
+                isObscureText = true;
+              }
+            });
+          },
+        )
+        )
       )
     );
   }
