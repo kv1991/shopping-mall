@@ -15,7 +15,7 @@ class DefaultButton extends StatelessWidget {
       child: TextButton(
         style: TextButton.styleFrom(
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
             primary: Colors.white,
             backgroundColor: kPrimaryColor),
         child: Text(
