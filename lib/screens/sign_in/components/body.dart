@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shopping_mall/components/default_button.dart';
 import 'package:shopping_mall/components/socal_card.dart';
-import 'package:shopping_mall/constants.dart';
+import 'package:shopping_mall/screens/sign_in/components/no_account_text.dart';
 import 'package:shopping_mall/screens/sign_in/components/sign_form.dart';
 import 'package:shopping_mall/size_config.dart';
 
@@ -42,16 +40,7 @@ class Body extends StatelessWidget {
                   ]
                 ),
                 SizedBox(height: getProportionateScreenHeight(20)),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Don\'t have an account? '),
-                    GestureDetector(
-                      child: Text('Sign Up', style: TextStyle(color: kPrimaryColor)),
-                      onTap: () {}
-                    )
-                  ]
-                )
+                NoAccountText()
               ]
             ),
           ) 
@@ -60,3 +49,4 @@ class Body extends StatelessWidget {
     );
   }
 }
+
