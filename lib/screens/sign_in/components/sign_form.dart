@@ -82,7 +82,7 @@ class _SignFormState extends State<SignForm> {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
                 KeyboardUtil.hideKeyboard(context);
-                // Navigator.pushNamed(context, '/login_success');
+                Navigator.pushNamed(context, '/login_success');
               }
             }
           )
