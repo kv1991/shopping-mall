@@ -5,6 +5,7 @@ import 'package:shopping_mall/components/default_button.dart';
 import 'package:shopping_mall/components/form_errors.dart';
 import 'package:shopping_mall/constants.dart';
 import 'package:shopping_mall/helper/keyboard.dart';
+import 'package:shopping_mall/screens/forgot_password/forgot_password_screen.dart';
 import 'package:shopping_mall/screens/login_success/login_success_screen.dart';
 import 'package:shopping_mall/size_config.dart';
 
@@ -71,7 +72,7 @@ class _SignFormState extends State<SignForm> {
               Spacer(),
               GestureDetector(
                 child: Text('Forgot Password', style: TextStyle(decoration: TextDecoration.underline)),
-                onTap: () => Navigator.pushNamed(context, '/forgot_password'),
+                onTap: () => Navigator.pushNamed(context, ForgotPasswordScreen.routeName),
               )
             ]
           ),

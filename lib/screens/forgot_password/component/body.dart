@@ -19,7 +19,7 @@ class Body extends StatelessWidget {
               children: [
                 SizedBox(height: SizeConfig.screenHeight * 0.04),
                 Text(
-                  'Forget Password', 
+                  'Forgot Password', 
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: getProportionateScreenWidth(28),
@@ -31,7 +31,7 @@ class Body extends StatelessWidget {
                   textAlign: TextAlign.center
                 ),
                 SizedBox(height: SizeConfig.screenHeight * 0.1),
-                ForgetPasswordForm()
+                ForgotPasswordForm()
               ]
             ),
           ),
@@ -41,12 +41,12 @@ class Body extends StatelessWidget {
   }
 }
 
-class ForgetPasswordForm extends StatefulWidget {
+class ForgotPasswordForm extends StatefulWidget {
   @override
-  _ForgetPasswordFormState createState() => _ForgetPasswordFormState();
+  _ForgotPasswordFormState createState() => _ForgotPasswordFormState();
 }
 
-class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
+class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
   String email;
   List<String> formErrors = [];
   final _formKey = GlobalKey<FormState>();
