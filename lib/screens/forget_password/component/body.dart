@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shopping_mall/components/custom_surfix_icon.dart';
 import 'package:shopping_mall/components/default_button.dart';
+import 'package:shopping_mall/components/form_errors.dart';
 import 'package:shopping_mall/constants.dart';
 import 'package:shopping_mall/screens/sign_in/sign_in_screen.dart';
 import 'package:shopping_mall/size_config.dart';
@@ -94,7 +95,7 @@ class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
               }
             }
           ),
-          renderFormErrors(),
+          FormErrors(errors: formErrors),
           SizedBox(height: SizeConfig.screenHeight * 0.08),
           DefaultButton(
             text: 'Continue',
@@ -110,27 +111,27 @@ class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
     );
   }
 
-  Widget renderFormErrors() {
-    return Column(
-      children: List.generate(formErrors.length, (index) => renderError(formErrors[index]))
-    );
-  }
+  // Widget renderFormErrors() {
+  //   return Column(
+  //     children: List.generate(formErrors.length, (index) => renderError(formErrors[index]))
+  //   );
+  // }
 
-  Widget renderError(error) {
-    return Padding(
-      padding: EdgeInsets.all(getProportionateScreenWidth(10)),
-      child: Row(
-        children: [
-          SvgPicture.asset(
-            'assets/icons/Error.svg',
-            width: getProportionateScreenWidth(20),
-            height: getProportionateScreenHeight(20),
-          ),
-          SizedBox(width: getProportionateScreenWidth(10)),
-          Text(error)
-        ],
-      ),
-    );
-  }
+  // Widget renderError(error) {
+  //   return Padding(
+  //     padding: EdgeInsets.all(getProportionateScreenWidth(10)),
+  //     child: Row(
+  //       children: [
+  //         SvgPicture.asset(
+  //           'assets/icons/Error.svg',
+  //           width: getProportionateScreenWidth(20),
+  //           height: getProportionateScreenHeight(20),
+  //         ),
+  //         SizedBox(width: getProportionateScreenWidth(10)),
+  //         Text(error)
+  //       ],
+  //     ),
+  //   );
+  // }
 
 }
