@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shopping_mall/components/custom_surfix_icon.dart';
 import 'package:shopping_mall/components/default_button.dart';
 import 'package:shopping_mall/components/form_errors.dart';
@@ -13,26 +12,28 @@ class Body extends StatelessWidget {
     return SafeArea(
       child: SizedBox(
         width: double.infinity,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-          child: Column(
-            children: [
-              SizedBox(height: SizeConfig.screenHeight * 0.04),
-              Text(
-                'Forget Password', 
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: getProportionateScreenWidth(28),
-                  fontWeight: FontWeight.bold
-                )
-              ),
-              Text(
-                'Please enter your email and we will send \nyou a link to return to your account',
-                textAlign: TextAlign.center
-              ),
-              SizedBox(height: SizeConfig.screenHeight * 0.08),
-              ForgetPasswordForm()
-            ]
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+            child: Column(
+              children: [
+                SizedBox(height: SizeConfig.screenHeight * 0.04),
+                Text(
+                  'Forget Password', 
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: getProportionateScreenWidth(28),
+                    fontWeight: FontWeight.bold
+                  )
+                ),
+                Text(
+                  'Please enter your email and we will send \nyou a link to return to your account',
+                  textAlign: TextAlign.center
+                ),
+                SizedBox(height: SizeConfig.screenHeight * 0.1),
+                ForgetPasswordForm()
+              ]
+            ),
           ),
         ),
       ),
@@ -41,12 +42,13 @@ class Body extends StatelessWidget {
 }
 
 class ForgetPasswordForm extends StatefulWidget {
+  @override
   _ForgetPasswordFormState createState() => _ForgetPasswordFormState();
 }
 
 class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
   String email;
-  List formErrors = [];
+  List<String> formErrors = [];
   final _formKey = GlobalKey<FormState>();
 
   void addError(error) {
