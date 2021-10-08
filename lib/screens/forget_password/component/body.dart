@@ -47,6 +47,21 @@ class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
   String email;
   List formErrors = [];
   final _formKey = GlobalKey<FormState>();
+
+  void addError(error) {
+    if(!formErrors.contains(error)) {
+      setState(() {
+        formErrors.add(error);
+      });
+    }
+  }
+
+  void removeError(error) {
+    setState(() {
+      formErrors.remove(error);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -63,29 +78,19 @@ class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
             onSaved: (val) => val = email,
             validator: (val) {
               if(val.isEmpty) {
-                if(!formErrors.contains(kEmailNullError)) {
-                  setState(() {
-                    formErrors.add(kEmailNullError);
-                  });
-                }
+                addError(kEmailNullError);
                 return '';
               } else if(!emailValidatorRegExp.hasMatch(val)) {
-                if(!formErrors.contains(kEmailNullError)) {
-                  setState(() {
-                    formErrors.add(kInvalidEmailError);
-                  });
-                }
+                addError(kInvalidEmailError);
                 return '';
               }
               return null;
             },
             onChanged: (val) {
               if(val.isNotEmpty) {
-                setState(() {
-                  formErrors.remove(kEmailNullError);
-                });
+                removeError(kEmailNullError);
               } else if(emailValidatorRegExp.hasMatch(val)) {
-                formErrors.remove(kInvalidEmailError);
+                removeError(kInvalidEmailError);
               }
             }
           ),
