@@ -3,6 +3,7 @@ import 'package:shopping_mall/components/custom_surfix_icon.dart';
 import 'package:shopping_mall/components/default_button.dart';
 import 'package:shopping_mall/components/form_errors.dart';
 import 'package:shopping_mall/constants.dart';
+import 'package:shopping_mall/screens/sign_in/components/no_account_text.dart';
 import 'package:shopping_mall/screens/sign_in/sign_in_screen.dart';
 import 'package:shopping_mall/size_config.dart';
 
@@ -31,7 +32,9 @@ class Body extends StatelessWidget {
                   textAlign: TextAlign.center
                 ),
                 SizedBox(height: SizeConfig.screenHeight * 0.1),
-                ForgotPasswordForm()
+                ForgotPasswordForm(),
+                SizedBox(height: SizeConfig.screenHeight * 0.04),
+                NoAccountText()
               ]
             ),
           ),
