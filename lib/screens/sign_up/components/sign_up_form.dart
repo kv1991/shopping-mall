@@ -5,7 +5,7 @@ import 'package:shopping_mall/components/default_button.dart';
 import 'package:shopping_mall/components/form_errors.dart';
 import 'package:shopping_mall/constants.dart';
 import 'package:shopping_mall/helper/keyboard.dart';
-import 'package:shopping_mall/screens/login_success/login_success_screen.dart';
+import 'package:shopping_mall/screens/complete_profile/complete_profile_screen.dart';
 import 'package:shopping_mall/size_config.dart';
 
 class SignUpForm extends StatefulWidget {
@@ -64,7 +64,7 @@ class _SignUpFormState extends State<SignUpForm> {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
                 KeyboardUtil.hideKeyboard(context);
-                Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                Navigator.pushNamed(context, CompleteProfileScreen.routeName);
               }
             }
           )
