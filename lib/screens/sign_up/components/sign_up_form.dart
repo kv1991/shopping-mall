@@ -3,6 +3,7 @@ import 'package:shopping_mall/components/custom_surfix_icon.dart';
 import 'package:shopping_mall/components/default_button.dart';
 import 'package:shopping_mall/components/form_errors.dart';
 import 'package:shopping_mall/constants.dart';
+import 'package:shopping_mall/screens/sign_in/sign_in_screen.dart';
 import 'package:shopping_mall/size_config.dart';
 
 class SignUpForm extends StatefulWidget {
@@ -25,8 +26,8 @@ class _SignUpFormState extends State<SignUpForm> {
     }
   }
 
-  void removeError(error) {
-    if(!formErrors.contains(error)) {
+  void removeError({ String error }) {
+    if(formErrors.contains(error)) {
       setState(() {
         formErrors.remove(error);
       });
@@ -51,7 +52,8 @@ class _SignUpFormState extends State<SignUpForm> {
             text: 'Continue',
             press: () {
               if (_formKey.currentState.validate()) {
-
+                _formKey.currentState.save();
+                Navigator.pushNamed(context, SignInScreen.routeName);
               }
             }
           )
@@ -70,21 +72,21 @@ class _SignUpFormState extends State<SignUpForm> {
       ),
       onSaved: (val) => val = email,
       onChanged: (val) {
-        if(val.isEmpty) {
-          addError(error: kEmailNullError);
-        } else if(!emailValidatorRegExp.hasMatch(val)) {
-          addError(error: kInvalidEmailError);
+        if(val.isNotEmpty) {
+          removeError(error: kEmailNullError);
+        } else if(emailValidatorRegExp.hasMatch(val)) {
+          removeError(error: kInvalidEmailError);
         }
         setState(() {
           val = email;
         });
       },
       validator: (val) {
-        if(val.isNotEmpty) {
-          removeError(kEmailNullError);
+        if(val.isEmpty) {
+          addError(error: kEmailNullError);
           return '';
         } else if(emailValidatorRegExp.hasMatch(val)) {
-          removeError(kInvalidEmailError);
+          addError(error: kInvalidEmailError);
           return '';
         }
         return null;
@@ -97,16 +99,16 @@ class _SignUpFormState extends State<SignUpForm> {
       obscureText: true,
       decoration: InputDecoration(
         labelText: 'Password',
-        hintText: 'Enter your password address',
+        hintText: 'Enter your password',
         suffixIcon: CustomSurffixIcon(svgIcon: 'assets/icons/Lock.svg')
       ),
       onSaved: (val) => val = password,
       onChanged: (val) {
         if(val.isNotEmpty) {
-          removeError(kPassNullError);
+          removeError(error: kPassNullError);
           return '';
         } else if(val.length >= 8) {
-          removeError(kShortPassError);
+          removeError(error: kShortPassError);
           return '';
         }
         setState(() {
@@ -131,17 +133,19 @@ class _SignUpFormState extends State<SignUpForm> {
       obscureText: true,
       decoration: InputDecoration(
         labelText: 'ConFirm Password',
-        hintText: 'Enter your confirm password address',
+        hintText: 'Enter your confirm password',
         suffixIcon: CustomSurffixIcon(svgIcon: 'assets/icons/Lock.svg')
       ),
       onSaved: (val) => val = conformPassword,
       onChanged: (val) {
         if(val.isNotEmpty) {
-          removeError(kPassNullError);
+          removeError(error: kPassNullError);
           return '';
         } else if(val.length >= 8) {
-          removeError(kShortPassError);
+          removeError(error: kShortPassError);
           return '';
+        } else if (val == password) {
+          removeError(error: kMatchPassError);
         }
         setState(() {
           val = password;
@@ -151,7 +155,10 @@ class _SignUpFormState extends State<SignUpForm> {
         if(val.isEmpty) {
           addError(error: kPassNullError);
           return '';
-        } else if(val != password) {
+        } else if(val.length < 8) {
+          addError(error: kShortPassError);
+          return '';
+        } else if (val != password) {
           addError(error: kMatchPassError);
           return '';
         }

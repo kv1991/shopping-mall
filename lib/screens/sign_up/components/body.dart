@@ -13,8 +13,10 @@ class Body extends StatelessWidget {
           child: Column(
             children: [
               Text('Register Account', style: TextStyle(color: Colors.black, fontSize: 28, fontWeight: FontWeight.bold)),
-              Text('Completed your details or continue with social media', textAlign: TextAlign.center),
-              SignUpForm()
+              Text('Completed your details or continue \nwith social media', textAlign: TextAlign.center),
+              SizedBox(height: SizeConfig.screenHeight * 0.08),
+              SignUpForm(),
+              SizedBox(height: SizeConfig.screenHeight * 0.08),
             ],
           ),
         ),
