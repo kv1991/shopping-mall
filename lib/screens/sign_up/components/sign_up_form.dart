@@ -61,6 +61,7 @@ class _SignUpFormState extends State<SignUpForm> {
           DefaultButton(
             text: 'Continue',
             press: () {
+              print(errors);
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
                 KeyboardUtil.hideKeyboard(context);
@@ -80,7 +81,8 @@ class _SignUpFormState extends State<SignUpForm> {
       onChanged: (value) {
         if(value.isNotEmpty) {
           removeError(error: kEmailNullError);
-        } else if(emailValidatorRegExp.hasMatch(value)) {
+        }
+        if(emailValidatorRegExp.hasMatch(value)) {
           removeError(error: kInvalidEmailError);
         }
       },
@@ -88,7 +90,8 @@ class _SignUpFormState extends State<SignUpForm> {
         if(value.isEmpty) {
           addError(error: kEmailNullError);
           return '';
-        } else if(!emailValidatorRegExp.hasMatch(value)) {
+        }
+        if(!emailValidatorRegExp.hasMatch(value)) {
           addError(error: kInvalidEmailError);
           return '';
         }
