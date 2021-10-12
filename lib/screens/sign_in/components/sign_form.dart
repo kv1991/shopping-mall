@@ -6,7 +6,6 @@ import 'package:shopping_mall/components/form_errors.dart';
 import 'package:shopping_mall/constants.dart';
 import 'package:shopping_mall/helper/keyboard.dart';
 import 'package:shopping_mall/screens/forgot_password/forgot_password_screen.dart';
-import 'package:shopping_mall/screens/login_success/login_success_screen.dart';
 import 'package:shopping_mall/size_config.dart';
 
 class SignForm extends StatefulWidget {
@@ -84,7 +83,7 @@ class _SignFormState extends State<SignForm> {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
                 KeyboardUtil.hideKeyboard(context);
-                Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                // Navigator.pushNamed(context, LoginSuccessScreen.routeName);
               }
             }
           )
@@ -108,10 +107,10 @@ class _SignFormState extends State<SignForm> {
       validator: (value) {
         if(value.isEmpty) {
           addError(error: kEmailNullError);
-          return null;
+          return '';
         } else if(!emailValidatorRegExp.hasMatch(value)) {
           addError(error: kInvalidEmailError);
-          return null;
+          return '';
         }
         return null;
       },
@@ -149,10 +148,10 @@ class _SignFormState extends State<SignForm> {
       validator: (value) {
         if(value.isEmpty) {
           addError(error: kPassNullError);
-          return null;
+          return '';
         } else if(value.length < 8) {
           addError(error: kShortPassError);
-          return null;
+          return '';
         }
         return null;
       },
