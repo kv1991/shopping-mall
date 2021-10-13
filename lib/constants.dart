@@ -38,9 +38,16 @@ final otpInputDecoration = InputDecoration(
   contentPadding:
       EdgeInsets.symmetric(vertical: getProportionateScreenWidth(15)),
   border: outlineInputBorder(),
-  focusedBorder: outlineInputBorder(),
+  focusedBorder: outlineFocusInputBorder(),
   enabledBorder: outlineInputBorder(),
 );
+
+OutlineInputBorder outlineFocusInputBorder() {
+  return OutlineInputBorder(
+    borderRadius: BorderRadius.circular(getProportionateScreenWidth(15)),
+    borderSide: BorderSide(color: kPrimaryColor),
+  );
+}
 
 OutlineInputBorder outlineInputBorder() {
   return OutlineInputBorder(
