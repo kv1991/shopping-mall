@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_mall/constants.dart';
+import 'package:shopping_mall/screens/OTP/components/opt_form.dart';
 import 'package:shopping_mall/size_config.dart';
 
 class Body extends StatelessWidget {
@@ -12,6 +13,7 @@ class Body extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
           child: Column(
             children: [
+              SizedBox(height: SizeConfig.screenHeight * 0.05),
               Text(
                 "OTP Verification",
                 style: headingStyle,
@@ -27,7 +29,8 @@ class Body extends StatelessWidget {
                     builder: (_, int, child) => Text("00:${int.toInt()}", style: TextStyle(color: kPrimaryColor)),
                   )
                 ]
-              )
+              ),
+              OPTForm(),
             ]
           )
         )
