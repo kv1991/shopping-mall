@@ -4,6 +4,7 @@ import 'package:shopping_mall/components/custom_surfix_icon.dart';
 import 'package:shopping_mall/components/default_button.dart';
 import 'package:shopping_mall/components/form_errors.dart';
 import 'package:shopping_mall/constants.dart';
+import 'package:shopping_mall/screens/OTP/otp_screen.dart';
 import 'package:shopping_mall/size_config.dart';
 
 class CompleteProfileForm extends StatefulWidget {
@@ -56,6 +57,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
             press: () {
               if(_formKey.currentState.validate()) {
                 _formKey.currentState.save();
+                Navigator.pushNamed(context, OPTScreen.routeName);
               }
             }
           )
