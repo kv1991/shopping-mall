@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_mall/components/default_button.dart';
 import 'package:shopping_mall/constants.dart';
 import 'package:shopping_mall/size_config.dart';
 
@@ -98,11 +99,16 @@ class _OPTFormState extends State<OPTForm> {
                     pin4FocusNode.unfocus();
                   }
                 ),
-              ),
+              )
             ]
           ),
-        ],
-      ),
+          SizedBox(height: SizeConfig.screenHeight * 0.1),
+          DefaultButton(
+            text: 'Continue',
+            press: () {}
+          )
+        ]
+      )
     );
   }
 }
