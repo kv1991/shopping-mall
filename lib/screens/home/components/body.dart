@@ -37,15 +37,19 @@ class Body extends StatelessWidget {
                       onChanged: (val) {}
                     )
                   ),
-                  Container(
-                    padding: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: kSecondaryColor.withOpacity(0.1),
+                  InkWell(
+                    onTap: () {},
+                    borderRadius: BorderRadius.circular(50),
+                    child: Container(
+                      padding: EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: kSecondaryColor.withOpacity(0.1),
+                      ),
+                      height: getProportionateScreenHeight(46),
+                      width: getProportionateScreenHeight(46),
+                      child: SvgPicture.asset('assets/icons/Cart Icon.svg')
                     ),
-                    height: getProportionateScreenHeight(46),
-                    width: getProportionateScreenHeight(46),
-                    child: SvgPicture.asset('assets/icons/Cart Icon.svg')
                   ),
                   InkWell(
                     onTap: () {},
@@ -90,6 +94,34 @@ class Body extends StatelessWidget {
                     )
                   )
                 ]
+              ),
+              SizedBox(height: getProportionateScreenHeight(20)),
+              Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: getProportionateScreenWidth(20),
+                  vertical: getProportionateScreenWidth(15)
+                ),
+                width: double.infinity,
+                height: 90,
+                decoration: BoxDecoration(
+                  color: Color(0xFF4A3298),
+                  borderRadius: BorderRadius.circular(20)
+                ),
+                child: Text.rich(
+                  TextSpan(
+                    style: TextStyle(color: Colors.white),
+                    children: [
+                      TextSpan(text: 'A Summer Surprise\n'),
+                      TextSpan(
+                        text: 'Cashback 20%',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: getProportionateScreenWidth(24)
+                        )
+                      )
+                    ]
+                  )
+                )
               )
             ]
           )
