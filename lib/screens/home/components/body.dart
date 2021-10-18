@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shopping_mall/constants.dart';
+import 'package:shopping_mall/screens/home/components/DiscountBanner.dart';
 import 'package:shopping_mall/size_config.dart';
 
 class Body extends StatelessWidget {
@@ -96,33 +97,7 @@ class Body extends StatelessWidget {
                 ]
               ),
               SizedBox(height: getProportionateScreenHeight(20)),
-              Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: getProportionateScreenWidth(20),
-                  vertical: getProportionateScreenWidth(15)
-                ),
-                width: double.infinity,
-                height: 90,
-                decoration: BoxDecoration(
-                  color: Color(0xFF4A3298),
-                  borderRadius: BorderRadius.circular(20)
-                ),
-                child: Text.rich(
-                  TextSpan(
-                    style: TextStyle(color: Colors.white),
-                    children: [
-                      TextSpan(text: 'A Summer Surprise\n'),
-                      TextSpan(
-                        text: 'Cashback 20%',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: getProportionateScreenWidth(24)
-                        )
-                      )
-                    ]
-                  )
-                )
-              )
+              DiscountBanner()
             ]
           )
         )
@@ -130,3 +105,4 @@ class Body extends StatelessWidget {
     );
   }
 }
+
