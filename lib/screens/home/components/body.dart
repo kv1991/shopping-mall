@@ -121,6 +121,7 @@ class Categories extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ...List.generate(categories.length, (index) => CategoryCart(icon: categories[index]['icon'], text: categories[index]['text']))
       ]
@@ -142,7 +143,7 @@ class CategoryCart extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: SizedBox(
-        width: getProportionateScreenWidth(56),
+        width: getProportionateScreenWidth(55),
         child: Column(
           children: [
             AspectRatio(
@@ -153,18 +154,18 @@ class CategoryCart extends StatelessWidget {
                   color: Color(0xFFFFECDF),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                width: getProportionateScreenWidth(56),
-                height: getProportionateScreenHeight(56),
                 child: SvgPicture.asset(icon)
               ),
             ),
-            SizedBox(
-              height: getProportionateScreenHeight(5),
-              child: Text(text)
-            ),
-          ],
-        ),
-      ),
+            const SizedBox(height: 5),
+            Text(
+              text,
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.black)
+            )
+          ]
+        )
+      )
     );
   }
 }
