@@ -79,10 +79,13 @@ class ProductCard extends StatelessWidget {
                     height: getProportionateScreenHeight(28),
                     padding: EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: kSecondaryColor.withOpacity(0.1),
+                      color: product.isPopular ? kPrimaryColor.withOpacity(0.1) : kSecondaryColor.withOpacity(0.1),
                       shape: BoxShape.circle
                     ),
-                    child: SvgPicture.asset('assets/icons/Heart Icon_2.svg'),
+                    child: SvgPicture.asset(
+                      'assets/icons/Heart Icon_2.svg',
+                      color: product.isPopular ? Color(0xFFFF4848) : Color(0xFFDBDEE4)
+                    ),
                   )
                 ]
               )
