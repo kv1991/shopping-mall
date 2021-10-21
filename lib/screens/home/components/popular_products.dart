@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shopping_mall/constants.dart';
 import 'package:shopping_mall/models/Product.dart';
+import 'package:shopping_mall/screens/details/details_screen.dart';
 import 'package:shopping_mall/screens/home/components/section_title.dart';
 import 'package:shopping_mall/size_config.dart';
 
@@ -16,7 +17,12 @@ class PopularProducts extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              ...List.generate(demoProducts.length, (index) => ProductCard(product: demoProducts[index]))
+              ...List.generate(demoProducts.length, (index) => ProductCard(
+                product: demoProducts[index],
+                press: () {
+                  Navigator.pushNamed(context, DetailsScreen.routeName);
+                }
+              ))
             ]
           )
         ),
@@ -27,8 +33,11 @@ class PopularProducts extends StatelessWidget {
 
 class ProductCard extends StatelessWidget {
   final Product product;
+  final GestureTapCallback press;
+
   const ProductCard({
-    this.product,
+    @required this.product,
+    @required this.press,
     Key key,
   }) : super(key: key);
 
@@ -38,7 +47,7 @@ class ProductCard extends StatelessWidget {
       padding: EdgeInsets.only(right: getProportionateScreenWidth(20)),
       child: GestureDetector(
         // product detail
-        onTap: () {},
+        onTap: press,
         child: Container(
           width: getProportionateScreenWidth(140),
           child: Column(
