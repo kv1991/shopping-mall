@@ -20,7 +20,11 @@ class PopularProducts extends StatelessWidget {
               ...List.generate(demoProducts.length, (index) => ProductCard(
                 product: demoProducts[index],
                 press: () {
-                  Navigator.pushNamed(context, DetailsScreen.routeName);
+                  Navigator.pushNamed(
+                    context,
+                    DetailsScreen.routeName,
+                    arguments: ProductDetailsArguments(product: demoProducts[index])
+                  );
                 }
               ))
             ]
