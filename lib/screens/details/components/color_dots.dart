@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_mall/components/rounded_icon_btn.dart';
 import 'package:shopping_mall/constants.dart';
 import 'package:shopping_mall/models/Product.dart';
 import 'package:shopping_mall/size_config.dart';
@@ -20,7 +21,11 @@ class _ColorDotsState extends State<ColorDots> {
       padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: Row(
         children: [
-          ...List.generate(widget.product.colors.length, (index) => buildColorDot(color: widget.product.colors[index], idx: index))
+          ...List.generate(widget.product.colors.length, (index) => buildColorDot(color: widget.product.colors[index], idx: index)),
+          Spacer(),
+          RoundedIconBtn(icon: Icons.remove, press: () {}),
+          SizedBox(width: getProportionateScreenWidth(15)),
+          RoundedIconBtn(icon: Icons.add, press: () {}, boxShadow: true),
         ]
       ),
     );
