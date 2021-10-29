@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_mall/models/Product.dart';
+import 'package:shopping_mall/screens/details/components/color_dots.dart';
 import 'package:shopping_mall/screens/details/components/product_descriptions.dart';
 import 'package:shopping_mall/screens/details/components/product_images.dart';
 import 'package:shopping_mall/screens/details/components/top_rounded_container.dart';
@@ -17,7 +18,15 @@ class Body extends StatelessWidget {
           color: Colors.white,
           child: Column(
             children: [
-              ProductDescriptions(product: product)
+              ProductDescriptions(product: product),
+              TopRoundedContainer(
+                color: Color(0xFFF6F7F9),
+                child: Column(
+                  children: [
+                    ColorDots(product: product)
+                  ]
+                )
+              )
             ]
           )
         )
@@ -25,4 +34,6 @@ class Body extends StatelessWidget {
     );
   }
 }
+
+
 
