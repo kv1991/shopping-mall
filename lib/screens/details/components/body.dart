@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shopping_mall/models/Product.dart';
 import 'package:shopping_mall/screens/details/components/product_descriptions.dart';
 import 'package:shopping_mall/screens/details/components/product_images.dart';
+import 'package:shopping_mall/screens/details/components/top_rounded_container.dart';
 
 class Body extends StatelessWidget {
   final Product product;
@@ -12,8 +13,15 @@ class Body extends StatelessWidget {
     return Column(
       children: [
         ProductImages(product: product),
-        ProductDescriptions()
-      ],
+        TopRoundedContainer(
+          color: Colors.white,
+          child: Column(
+            children: [
+              ProductDescriptions(product: product)
+            ]
+          )
+        )
+      ]
     );
   }
 }

@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shopping_mall/constants.dart';
+import 'package:shopping_mall/models/Product.dart';
 import 'package:shopping_mall/size_config.dart';
 
 class ProductDescriptions extends StatelessWidget {
+  final Product product;
+
   const ProductDescriptions({
     Key key,
+    this.product
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(20)),
+      margin: EdgeInsets.only(bottom: getProportionateScreenWidth(20)),
       padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -24,7 +28,7 @@ class ProductDescriptions extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(15)),
             child: Text(
-              'Wireless Controller for PS4™"',
+              product.title,
               style: TextStyle(
                 fontSize: 24,
                 color: Colors.black,
@@ -53,7 +57,7 @@ class ProductDescriptions extends StatelessWidget {
               right: getProportionateScreenWidth(64),
             ),
             child: Text(
-              "Wireless Controller for PS4™ gives you what you want in your gaming from over precision control your games to sharing …",
+              product.description,
               maxLines: 3
             ),
           ),
