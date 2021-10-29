@@ -16,7 +16,6 @@ class ProductDescriptions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.only(bottom: getProportionateScreenWidth(20)),
       padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -26,7 +25,7 @@ class ProductDescriptions extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(15)),
+            padding: EdgeInsets.only(bottom: getProportionateScreenWidth(15)),
             child: Text(
               product.title,
               style: TextStyle(
@@ -63,16 +62,13 @@ class ProductDescriptions extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {},
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(15)),
-              child: Text(
-                'See More Detail >',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  color: kPrimaryColor
-                )
+            child: Text(
+              'See More Detail >',
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                color: kPrimaryColor
               )
-            ),
+            )
           )
         ]
       ),
